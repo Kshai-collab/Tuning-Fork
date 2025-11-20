@@ -382,3 +382,219 @@ footer {
         padding: 3rem 2rem;
     }
 }
+/* --- SPECIAL ORDERS PAGE --- */
+
+.special-orders-container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 80px; /* Space for nav */
+    background: var(--dark);
+}
+
+/* Left Side Image */
+.special-image-side {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1519225421980-715cb0202128?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 4rem;
+}
+
+.special-image-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 400px;
+}
+
+.content-overlay h2 {
+    font-family: var(--font-head);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+/* Right Side Form */
+.special-form-side {
+    flex: 1;
+    padding: 4rem 5%;
+    background: var(--darker);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-header h1 {
+    font-family: var(--font-head);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header .highlight {
+    color: var(--primary);
+}
+
+/* Form Styling */
+#special-order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.input-box label {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 500;
+}
+
+.input-box input, 
+.input-box select, 
+.input-box textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus, 
+.input-box select:focus, 
+.input-box textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255,255,255,0.08);
+}
+
+/* Calendar Icon Color Fix */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness for Form */
+@media (max-width: 900px) {
+    .special-orders-container {
+        flex-direction: column;
+    }
+    
+    .special-image-side {
+        min-height: 300px;
+        padding: 2rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* --- MODAL STYLES --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--darker);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid var(--secondary);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 30px rgba(255, 165, 2, 0.2);
+    animation: zoomIn 0.3s ease;
+}
+
+.modal-content i {
+    font-size: 4rem;
+    color: #2ecc71; /* Green Check */
+    margin-bottom: 1.5rem;
+}
+
+.modal-content h2 {
+    font-family: var(--font-head);
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.modal-content p {
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.modal-content button {
+    padding: 10px 30px;
+    background: transparent;
+    border: 2px solid var(--light);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-content button:hover {
+    background: white;
+    color: var(--dark);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
