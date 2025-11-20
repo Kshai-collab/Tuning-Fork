@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Events | Gourmet Haven</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" style="background: var(--darker);">
+        <div class="logo">
+            <a href="index.html" style="color:inherit;"><i class="fa-solid fa-utensils"></i> Gourmet<span>Haven</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="special.html" class="active">Special Orders</a></li>
+            <li><a href="cart.html" class="cart-btn"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Special Orders Section -->
+    <section class="special-orders-container">
+        <div class="special-image-side">
+            <div class="content-overlay">
+                <h2>Crafting Memories</h2>
+                <p>From intimate dinners to grand birthday bashes, let us handle the details while you savor the moment.</p>
+            </div>
+        </div>
+        
+        <div class="special-form-side">
+            <div class="form-header">
+                <h1>Plan Your <span class="highlight">Event</span></h1>
+                <p>Fill out the form below to request a quote or booking.</p>
+            </div>
+
+            <form id="special-order-form">
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+1 234 567 890" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="event-type">Event Type</label>
+                        <select id="event-type" required>
+                            <option value="" disabled selected>Select Occasion</option>
+                            <option value="birthday">Birthday Celebration</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="corporate">Corporate Lunch/Dinner</option>
+                            <option value="private">Private Dining</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" min="1" placeholder="e.g. 25" required>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="message">Special Requests / Dietary Restrictions</label>
+                    <textarea id="message" rows="4" placeholder="Tell us about cake messages, decorations, or allergies..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Success Modal (Hidden by default) -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Request Received!</h2>
+            <p>Thank you for choosing Gourmet Haven. Our event manager will contact you within 24 hours to finalize the details.</p>
+            <button id="close-modal-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Gourmet<span>Haven</span></h3>
+                <p>Serving happiness, one plate at a time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="menu.html">Menu</a>
+                <a href="special.html">Special Orders</a>
+                <a href="cart.html">Checkout</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Gourmet Haven. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
