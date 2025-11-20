@@ -37,3 +37,37 @@ hamburger.addEventListener('click', () => {
     to { opacity: 1; transform: translateX(0); }
 }
 */
+// --- SPECIAL ORDERS FORM HANDLING ---
+
+const specialForm = document.getElementById('special-order-form');
+const modal = document.getElementById('success-modal');
+const closeModalBtn = document.getElementById('close-modal-btn');
+
+if (specialForm) {
+    specialForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent actual submission
+
+        // In a real backend, you would send the data here.
+        // For now, we simulate a success message.
+        
+        // Show Modal
+        modal.style.display = "flex";
+        
+        // Clear Form
+        specialForm.reset();
+    });
+}
+
+// Close Modal Actions
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+}
+
+// Close modal if clicking outside content
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
