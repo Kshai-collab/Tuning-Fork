@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Gourmet Haven</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" style="background: var(--darker);">
+        <div class="logo">
+            <a href="index.html" style="color:inherit;"><i class="fa-solid fa-utensils"></i> Gourmet<span>Haven</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="special.html">Special Orders</a></li>
+            <li><a href="cart.html" class="active cart-btn"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-page">
+        <div class="cart-header">
+            <h1>Your <span class="highlight">Order</span></h1>
+        </div>
+
+        <div class="cart-container">
+            <!-- Left Side: Cart Items -->
+            <div class="cart-items-container">
+                <div class="cart-items" id="cart-items">
+                    <!-- Items will be injected here by JS -->
+                </div>
+            </div>
+
+            <!-- Right Side: Summary -->
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span id="subtotal-price">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Tax (10%)</span>
+                    <span id="tax-price">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Delivery</span>
+                    <span>$5.00</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="total-price">$0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                <a href="menu.html" class="continue-shopping"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Gourmet<span>Haven</span></h3>
+                <p>Serving happiness, one plate at a time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="menu.html">Menu</a>
+                <a href="special.html">Special Orders</a>
+                <a href="cart.html">Checkout</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Gourmet Haven. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
