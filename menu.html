@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | Gourmet Haven</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation (Same as Home) -->
+    <nav id="navbar" style="background: var(--darker);"> <!-- Forced dark background for inner pages -->
+        <div class="logo">
+            <a href="index.html" style="color:inherit;"><i class="fa-solid fa-utensils"></i> Gourmet<span>Haven</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Our Menu</a></li>
+            <li><a href="special.html">Special Orders</a></li>
+            <li><a href="cart.html" class="cart-btn"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <section class="menu-header">
+        <h1>Our <span class="highlight">Delicacies</span></h1>
+        <p>Curated flavors for the discerning palate.</p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="menu-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="starters">Starters</button>
+            <button class="filter-btn" data-category="mains">Main Course</button>
+            <button class="filter-btn" data-category="desserts">Desserts</button>
+            <button class="filter-btn" data-category="drinks">Drinks</button>
+        </div>
+
+        <!-- Menu Grid (Populated by JS) -->
+        <div class="menu-grid" id="menu-grid">
+            <!-- Javascript will inject code here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Gourmet<span>Haven</span></h3>
+                <p>Serving happiness, one plate at a time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="menu.html">Menu</a>
+                <a href="special.html">Special Orders</a>
+                <a href="cart.html">Checkout</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Gourmet Haven. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
