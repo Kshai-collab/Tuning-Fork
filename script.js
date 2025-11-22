@@ -1,58 +1,162 @@
-// Navbar Scroll Effect
+// --- NAVBAR & MOBILE MENU ---
 const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
-    
-    // Animate Links (Optional fade in)
-    const links = document.querySelectorAll('.nav-links li');
-    links.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
+if(document.querySelector('.hero')) {
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
-    
-    // Hamburger Animation
-    hamburger.classList.toggle('toggle');
-});
-
-// Add animation for nav links in CSS (insert this into style.css if you want the fade effect)
-/* 
-@keyframes navLinkFade {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
 }
-*/
-// ... (Keep the Navbar & Mobile Menu code at the top) ...
 
-// --- DATA & CART LOGIC ---
+if(hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+        hamburger.classList.toggle('toggle');
+    });
+}
 
+// --- COMPLETE MENU DATA WITH HALF/FULL PRICING ---
 const menuItems = [
-    { id: 1, name: "Truffle Pasta", price: 18.00, category: "mains", desc: "Handmade fettuccine with black truffle cream sauce.", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=60" },
-    { id: 2, name: "Wagyu Burger", price: 24.00, category: "mains", desc: "Premium wagyu beef, aged cheddar, and caramelized onions.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=60" },
-    { id: 3, name: "Caesar Salad", price: 12.00, category: "starters", desc: "Crisp romaine, parmesan crisp, and house-made dressing.", img: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=500&q=60" },
-    { id: 4, name: "Molten Lava Cake", price: 10.00, category: "desserts", desc: "Rich dark chocolate cake with a gooey center.", img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=500&q=60" },
-    { id: 5, name: "Spicy Wings", price: 14.00, category: "starters", desc: "Crispy chicken wings tossed in our signature hot sauce.", img: "https://images.unsplash.com/photo-1608039829575-403424a6957a?auto=format&fit=crop&w=500&q=60" },
-    { id: 6, name: "Mojito", price: 8.00, category: "drinks", desc: "Classic mint and lime cocktail, refreshing and cool.", img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=60" },
-    { id: 7, name: "Grilled Salmon", price: 22.00, category: "mains", desc: "Fresh atlantic salmon with asparagus and lemon butter.", img: "https://images.unsplash.com/photo-1467003909585-2f8a7270028d?auto=format&fit=crop&w=500&q=60" },
-    { id: 8, name: "Berry Cheesecake", price: 9.00, category: "desserts", desc: "New York style cheesecake topped with fresh berries.", img: "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?auto=format&fit=crop&w=500&q=60" }
+    // --- COMBOS (Single Price) ---
+    { id: 101, name: "Mega Combo", price: 230, category: "combos", desc: "Chicken Biryani + Roasted Chicken + Omelette.", img: "https://images.unsplash.com/photo-1631515243349-e06036043944?w=500" },
+    { id: 102, name: "Fry Combo", price: 220, category: "combos", desc: "Chicken Biryani + Chicken Fry + Omelette.", img: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500" },
+    { id: 103, name: "Basic Combo", price: 190, category: "combos", desc: "Chicken Biryani + Chicken Fry.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?w=500" },
+    { id: 104, name: "Roast Combo", price: 200, category: "combos", desc: "Chicken Biryani + Roasted Chicken.", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" },
+    { id: 105, name: "Curry Rice Combo", price: 160, category: "combos", desc: "Chicken Curry + Plain Rice.", img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500" },
+
+    // --- BIRYANI (Half & Full) ---
+    { 
+        id: 201, name: "Chicken Biryani", category: "biryani", desc: "Aromatic basmati rice with spiced chicken.", 
+        variations: { half: 70, full: 130 },
+        img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" 
+    },
+    { 
+        id: 202, name: "Chicken Biryani (Gravy)", category: "biryani", desc: "Biryani served with extra masala gravy.", 
+        variations: { half: 80, full: 140 },
+        img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" 
+    },
+    { 
+        id: 203, name: "Roasted Chix Biryani", category: "biryani", desc: "Special biryani with roasted chicken pieces.", 
+        variations: { half: 100, full: 180 },
+        img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" 
+    },
+    { 
+        id: 204, name: "Egg Biryani", category: "biryani", desc: "Flavorful biryani with boiled eggs.", 
+        variations: { half: 70, full: 130 },
+        img: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=500" 
+    },
+    { 
+        id: 205, name: "Veg Biryani", category: "biryani", desc: "Loaded with fresh vegetables and spices.", 
+        variations: { half: 70, full: 130 },
+        img: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=500" 
+    },
+
+    // --- RICE (Half & Full) ---
+    { 
+        id: 301, name: "Chicken Fried Rice", category: "biryani", desc: "Indo-Chinese style stir fried rice.", 
+        variations: { half: 90, full: 160 },
+        img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?w=500" 
+    },
+    { 
+        id: 302, name: "Egg Chicken Rice", category: "biryani", desc: "Fried rice with egg and chicken.", 
+        variations: { half: 110, full: 180 },
+        img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?w=500" 
+    },
+    { 
+        id: 303, name: "Egg Fried Rice", category: "biryani", desc: "Classic egg fried rice.", 
+        variations: { half: 90, full: 150 },
+        img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?w=500" 
+    },
+    { 
+        id: 304, name: "Schezwan Chix Rice", category: "biryani", desc: "Spicy Schezwan chicken rice.", 
+        variations: { half: 90, full: 150 },
+        img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=500" 
+    },
+    { 
+        id: 305, name: "Plain Rice", category: "biryani", desc: "Steamed white rice.", 
+        variations: { half: 60, full: 100 },
+        img: "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?w=500" 
+    },
+
+    // --- CHICKEN STARTERS (Varied Prices) ---
+    { 
+        id: 401, name: "Roasted Tandoori", category: "chicken_starters", desc: "Marinated roasted chicken (Bone-in).", 
+        variations: { half: 230, full: 400 }, // Skipping Quarter for UI simplicity
+        img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500" 
+    },
+    { 
+        id: 402, name: "Chicken Tikka", category: "chicken_starters", desc: "Boneless grilled chicken chunks.", 
+        variations: { half: 140, full: 260 },
+        img: "https://images.unsplash.com/photo-1599021406414-06758652431d?w=500" 
+    },
+    { 
+        id: 403, name: "Chicken Lollipop", category: "chicken_starters", desc: "Fried chicken drumettes.", 
+        variations: { half: 160, full: 290 },
+        img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500" 
+    },
+    { 
+        id: 404, name: "Chilli Chicken", category: "chicken_starters", desc: "Spicy chinese style chicken.", 
+        variations: { half: 140, full: 250 },
+        img: "https://images.unsplash.com/photo-1626804475297-411dbe6372eb?w=500" 
+    },
+
+    // --- CHICKEN CURRIES (Half & Full) ---
+    { 
+        id: 501, name: "Chicken Rara", category: "chicken_curries", desc: "Chef's special rich gravy.", 
+        variations: { half: 370, full: 590 },
+        img: "https://images.unsplash.com/photo-1547928576-a4a33237cbc3?w=500" 
+    },
+    { 
+        id: 502, name: "Matka Chicken", category: "chicken_curries", desc: "Pot cooked traditional curry.", 
+        variations: { half: 390, full: 590 },
+        img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500" 
+    },
+    { 
+        id: 503, name: "Butter Chicken", category: "chicken_curries", desc: "Creamy tomato butter sauce.", 
+        variations: { half: 340, full: 530 },
+        img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500" 
+    },
+    { 
+        id: 504, name: "Kadhai Chicken", category: "chicken_curries", desc: "Spicy wok cooked chicken.", 
+        variations: { half: 320, full: 520 },
+        img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500" 
+    },
+    { 
+        id: 505, name: "Chicken Curry", category: "chicken_curries", desc: "Homestyle chicken gravy.", 
+        variations: { half: 290, full: 480 },
+        img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500" 
+    },
+
+    // --- VEG CURRIES (Half & Full) ---
+    { 
+        id: 601, name: "Paneer Tikka Masala", category: "veg_curries", desc: "Grilled paneer in spicy gravy.", 
+        variations: { half: 180, full: 320 },
+        img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500" 
+    },
+    { 
+        id: 602, name: "Kadhai Paneer", category: "veg_curries", desc: "Spicy paneer with bell peppers.", 
+        variations: { half: 170, full: 300 },
+        img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500" 
+    },
+    { 
+        id: 603, name: "Shahi Paneer", category: "veg_curries", desc: "Sweet and creamy gravy.", 
+        variations: { half: 160, full: 290 },
+        img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500" 
+    },
+
+    // --- ROLLS (Single Price) ---
+    { id: 701, name: "Chicken Roll", price: 70, category: "rolls", desc: "Spiced chicken filling.", img: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=500" },
+    { id: 702, name: "Double Chicken Roll", price: 90, category: "rolls", desc: "Extra chicken filling.", img: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=500" },
+    { id: 703, name: "Paneer Roll", price: 70, category: "rolls", desc: "Cottage cheese filling.", img: "https://images.unsplash.com/photo-1627907228175-2bf846a303b4?w=500" },
+
+    // --- BREADS (Single Price) ---
+    { id: 801, name: "Tandoori Roti", price: 15, category: "breads", desc: "Clay oven bread.", img: "https://images.unsplash.com/photo-1573165245368-80e9273c5240?w=500" },
+    { id: 802, name: "Butter Naan", price: 30, category: "breads", desc: "Butter topped naan.", img: "https://images.unsplash.com/photo-1626074353765-517a681e40be?w=500" },
+    { id: 803, name: "Garlic Naan", price: 40, category: "breads", desc: "Garlic infused naan.", img: "https://images.unsplash.com/photo-1573165245368-80e9273c5240?w=500" }
 ];
 
-// Selectors
+// --- SELECTORS ---
 const menuGrid = document.getElementById('menu-grid');
 const cartItemsEl = document.getElementById('cart-items');
 const subtotalEl = document.getElementById('subtotal-price');
@@ -60,11 +164,11 @@ const taxEl = document.getElementById('tax-price');
 const totalEl = document.getElementById('total-price');
 const cartCountEl = document.getElementById('cart-count');
 
-// Initialize Cart
+// --- CART INITIALIZATION ---
 let cart = JSON.parse(localStorage.getItem('CART')) || [];
 updateCartCount();
 
-// --- MENU PAGE LOGIC ---
+// --- MENU RENDERING ---
 if (menuGrid) {
     displayMenu(menuItems);
     
@@ -72,42 +176,116 @@ if (menuGrid) {
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            filterBtns.forEach(btn => btn.classList.remove('active'));
+            filterBtns.forEach(b => b.classList.remove('active'));
             e.currentTarget.classList.add('active');
             const category = e.currentTarget.dataset.category;
-            const menuCategory = menuItems.filter((menuItem) => menuItem.category === category);
-            displayMenu(category === "all" ? menuItems : menuCategory);
+            const menuCategory = menuItems.filter((item) => {
+                if(category === "all") return true;
+                return item.category === category;
+            });
+            displayMenu(menuCategory);
         });
     });
 }
 
 function displayMenu(items) {
+    if (!menuGrid) return;
+    
     let displayMenu = items.map((item) => {
+        let priceSection;
+        let controlSection;
+
+        // Check if item has variations (Half/Full) or Single Price
+        if (item.variations) {
+            // Default to 'full' price for display, but show selector
+            priceSection = `<span class="price" id="price-${item.id}">${item.variations.full}</span>`;
+            
+            controlSection = `
+                <select class="size-select" id="size-${item.id}" onchange="updateCardPrice(${item.id})">
+                    <option value="full">Full - ${item.variations.full}</option>
+                    <option value="half">Half - ${item.variations.half}</option>
+                </select>
+                <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
+                    <i class="fa-solid fa-basket-shopping"></i> Add to Cart
+                </button>
+            `;
+        } else {
+            // Single Price Item
+            priceSection = `<span class="price">${item.price}</span>`;
+            controlSection = `
+                <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
+                    <i class="fa-solid fa-basket-shopping"></i> Add to Cart
+                </button>
+            `;
+        }
+
         return `
             <article class="food-card">
                 <div class="card-image"><img src="${item.img}" alt="${item.name}"></div>
                 <div class="card-details">
-                    <div class="card-header"><span class="name">${item.name}</span><span class="price">$${item.price.toFixed(2)}</span></div>
+                    <div class="card-header">
+                        <span class="name">${item.name}</span>
+                        ${priceSection}
+                    </div>
                     <p class="description">${item.desc}</p>
-                    <button class="add-to-cart-btn" onclick="addToCart(${item.id})"><i class="fa-solid fa-basket-shopping"></i> Add to Cart</button>
+                    ${controlSection}
                 </div>
             </article>
         `;
     }).join("");
+    
     menuGrid.innerHTML = displayMenu;
+}
+
+// Function to update price displayed on card when dropdown changes
+function updateCardPrice(id) {
+    const item = menuItems.find(p => p.id === id);
+    const select = document.getElementById(`size-${id}`);
+    const priceSpan = document.getElementById(`price-${id}`);
+    
+    if(item && select && priceSpan) {
+        priceSpan.innerText = item.variations[select.value];
+    }
 }
 
 // --- CART LOGIC ---
 
 function addToCart(id) {
-    // Check if item already exists
-    if(cart.some((item) => item.id === id)) {
-        changeNumberOfUnits("plus", id);
-    } else {
-        const item = menuItems.find((product) => product.id === id);
-        cart.push({ ...item, numberOfUnits: 1 });
+    const item = menuItems.find((product) => product.id === id);
+    let selectedSize = 'standard'; // default for single price items
+    let selectedPrice = item.price;
+    let displayName = item.name;
+
+    // Check if variations exist and get selected value
+    const sizeSelect = document.getElementById(`size-${id}`);
+    if (sizeSelect) {
+        selectedSize = sizeSelect.value;
+        selectedPrice = item.variations[selectedSize];
+        // Capitalize size for display
+        const sizeLabel = selectedSize.charAt(0).toUpperCase() + selectedSize.slice(1);
+        displayName = `${item.name} (${sizeLabel})`;
     }
+
+    // Create a unique Cart ID based on Item ID + Size (e.g., "101-half")
+    const cartItemId = `${id}-${selectedSize}`;
+
+    // Check if THIS specific variation is already in cart
+    if (cart.some((item) => item.cartId === cartItemId)) {
+        changeNumberOfUnits("plus", cartItemId);
+    } else {
+        cart.push({
+            ...item,
+            cartId: cartItemId, // Unique ID for Cart Logic
+            name: displayName,
+            price: selectedPrice,
+            numberOfUnits: 1
+        });
+    }
+
     updateCart();
+    
+    // Optional: Visual feedback
+    alert(`${displayName} added to cart!`);
 }
 
 function updateCart() {
@@ -126,9 +304,9 @@ function updateCartCount() {
 }
 
 function renderCartItems() {
-    if (!cartItemsEl) return; // Only run on Cart page
-
-    cartItemsEl.innerHTML = ""; // Clear items
+    if (!cartItemsEl) return;
+    
+    cartItemsEl.innerHTML = "";
     
     if(cart.length === 0) {
         cartItemsEl.innerHTML = `
@@ -146,23 +324,24 @@ function renderCartItems() {
                 <img src="${item.img}" alt="${item.name}" class="item-img">
                 <div class="item-details">
                     <h4>${item.name}</h4>
-                    <div class="item-price">$${item.price.toFixed(2)}</div>
+                    <div class="item-price">${item.price}</div>
                     <div class="unit-controls">
-                        <div onclick="changeNumberOfUnits('minus', ${item.id})">-</div>
+                        <div onclick="changeNumberOfUnits('minus', '${item.cartId}')">-</div>
                         <div class="units">${item.numberOfUnits}</div>
-                        <div onclick="changeNumberOfUnits('plus', ${item.id})">+</div>
+                        <div onclick="changeNumberOfUnits('plus', '${item.cartId}')">+</div>
                     </div>
                 </div>
-                <button class="remove-btn" onclick="removeItem(${item.id})"><i class="fa-solid fa-trash"></i></button>
+                <button class="remove-btn" onclick="removeItem('${item.cartId}')"><i class="fa-solid fa-trash"></i></button>
             </div>
         `;
     });
 }
 
-function changeNumberOfUnits(action, id) {
+// Note: ID param here is now the string cartId (e.g. "101-half")
+function changeNumberOfUnits(action, cartId) {
     cart = cart.map((item) => {
         let numberOfUnits = item.numberOfUnits;
-        if (item.id === id) {
+        if (item.cartId === cartId) {
             if (action === "minus" && numberOfUnits > 1) {
                 numberOfUnits--;
             } else if (action === "plus" && numberOfUnits < 10) {
@@ -174,8 +353,8 @@ function changeNumberOfUnits(action, id) {
     updateCart();
 }
 
-function removeItem(id) {
-    cart = cart.filter((item) => item.id !== id);
+function removeItem(cartId) {
+    cart = cart.filter((item) => item.cartId !== cartId);
     updateCart();
 }
 
@@ -183,20 +362,16 @@ function renderSubtotal() {
     if(!subtotalEl) return;
 
     let totalPrice = 0;
-    let totalItems = 0;
-
     cart.forEach((item) => {
         totalPrice += item.price * item.numberOfUnits;
-        totalItems += item.numberOfUnits;
     });
 
-    const tax = totalPrice * 0.1; // 10% Tax
-    const shipping = totalPrice > 0 ? 5 : 0; // $5 shipping unless cart is empty
-    const grandTotal = totalPrice + tax + shipping;
+    const tax = totalPrice * 0.05; // 5% GST for restaurants
+    const grandTotal = totalPrice + tax;
 
-    subtotalEl.innerHTML = `$${totalPrice.toFixed(2)}`;
-    taxEl.innerHTML = `$${tax.toFixed(2)}`;
-    totalEl.innerHTML = `$${grandTotal.toFixed(2)}`;
+    subtotalEl.innerHTML = `${totalPrice.toFixed(2)}`;
+    taxEl.innerHTML = `${tax.toFixed(2)}`;
+    totalEl.innerHTML = `${grandTotal.toFixed(2)}`;
 }
 
 function checkout() {
@@ -204,47 +379,13 @@ function checkout() {
         alert("Your cart is empty!");
         return;
     }
-    // In a real app, this would redirect to a payment gateway
-    alert("Order Placed Successfully! Bon Appétit!");
+    // Logic to send order to WhatsApp or Backend would go here
+    const orderText = cart.map(item => `${item.name} x${item.numberOfUnits}`).join(', ');
+    alert(`Order Placed: ${orderText}`);
+    
     cart = [];
     updateCart();
 }
 
-// Run render on page load if on cart page
-if(cartItemsEl) {
-    updateCart();
-}
-// --- SPECIAL ORDERS FORM HANDLING ---
-
-const specialForm = document.getElementById('special-order-form');
-const modal = document.getElementById('success-modal');
-const closeModalBtn = document.getElementById('close-modal-btn');
-
-if (specialForm) {
-    specialForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevent actual submission
-
-        // In a real backend, you would send the data here.
-        // For now, we simulate a success message.
-        
-        // Show Modal
-        modal.style.display = "flex";
-        
-        // Clear Form
-        specialForm.reset();
-    });
-}
-
-// Close Modal Actions
-if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', () => {
-        modal.style.display = "none";
-    });
-}
-
-// Close modal if clicking outside content
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
-});
+// Initialize on load
+if(cartItemsEl) updateCart();
