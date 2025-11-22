@@ -812,3 +812,35 @@ footer {
         top: 0;
     }
 }
+/* --- SIZE SELECTOR STYLES --- */
+
+.size-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+
+.size-select:hover, .size-select:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.size-select option {
+    background: var(--darker);
+    color: white;
+}
+
+/* Update price display to accomodate changes */
+.card-header .price {
+    min-width: 60px;
+    text-align: right;
+}
